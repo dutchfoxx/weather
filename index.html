@@ -49,10 +49,20 @@
     <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=6" class="virtual-button button7" target="_blank"></a>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        function hideTempDivs() {
             const widgetDiv = document.getElementById('ww_aafa8719d1cd6');
-            const tempDivs = widgetDiv.querySelectorAll('.temp');
-            tempDivs.forEach(div => div.style.display = 'none');
+            if (widgetDiv) {
+                const tempDivs = widgetDiv.querySelectorAll('.temp');
+                if (tempDivs.length > 0) {
+                    tempDivs.forEach(div => div.style.display = 'none');
+                } else {
+                    setTimeout(hideTempDivs, 100); // Retry after 100ms if tempDivs are not yet available
+                }
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(hideTempDivs, 100); // Initial delay to ensure the widget loads
         });
     </script>
 </body>
