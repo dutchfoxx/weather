@@ -61,24 +61,21 @@
             }
         }
     
-        function updateSvgWrappers() {
+        function updateSvgMargin() {
             const widgetDiv = document.getElementById('ww_aafa8719d1cd6');
             if (widgetDiv) {
-                const narrowWrappers = widgetDiv.querySelectorAll('.svg-wrapper.narrow');
-                const wideWrappers = widgetDiv.querySelectorAll('.svg-wrapper.wide');
-                
-                if (narrowWrappers.length > 0 || wideWrappers.length > 0) {
-                    narrowWrappers.forEach(div => div.style.display = 'inline-block !important');
-                    wideWrappers.forEach(div => div.style.display = 'none !important');
+                const dayForecastSvgs = widgetDiv.querySelectorAll('.day-forecast svg');
+                if (dayForecastSvgs.length > 0) {
+                    dayForecastSvgs.forEach(svg => svg.style.margin = '0');
                 } else {
-                    setTimeout(updateSvgWrappers, 100); // Retry after 100ms if wrappers are not yet available
+                    setTimeout(updateSvgMargin, 100); // Retry after 100ms if dayForecastSvgs are not yet available
                 }
             }
         }
     
         function initWidgetModifications() {
             hideTempDivs();
-            updateSvgWrappers();
+            updateSvgMargin();
         }
     
         document.addEventListener('DOMContentLoaded', function() {
