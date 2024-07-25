@@ -47,5 +47,13 @@
     <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=4" class="virtual-button button5" target="_blank"></a>
     <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=5" class="virtual-button button6" target="_blank"></a>
     <a href="https://www.yr.no/en/forecast/hourly-table/2-2960317/Luxembourg/Luxembourg/Ville%20de%20Luxembourg?i=6" class="virtual-button button7" target="_blank"></a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const widgetDiv = document.getElementById('ww_aafa8719d1cd6');
+            const tempDivs = widgetDiv.querySelectorAll('.temp');
+            tempDivs.forEach(div => div.style.display = 'none');
+        });
+    </script>
 </body>
 </html>
