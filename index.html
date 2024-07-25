@@ -62,11 +62,11 @@
         }
     
         function updateSvgWrappers() {
-        const widgetDiv = document.getElementById('ww_aafa8719d1cd6');
-        if (widgetDiv) {
-            const narrowWrappers = widgetDiv.querySelectorAll('.svg-wrapper.narrow');
-            const wideWrappers = widgetDiv.querySelectorAll('.svg-wrapper.wide');
-            
+            const widgetDiv = document.getElementById('ww_aafa8719d1cd6');
+            if (widgetDiv) {
+                const narrowWrappers = widgetDiv.querySelectorAll('.svg-wrapper.narrow');
+                const wideWrappers = widgetDiv.querySelectorAll('.svg-wrapper.wide');
+                
                 if (narrowWrappers.length > 0 || wideWrappers.length > 0) {
                     narrowWrappers.forEach(div => div.style.display = 'block');
                     wideWrappers.forEach(div => div.style.display = 'none');
@@ -75,10 +75,14 @@
                 }
             }
         }
-
+    
+        function initWidgetModifications() {
+            hideTempDivs();
+            updateSvgWrappers();
+        }
+    
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(hideTempDivs, 100); // Initial delay to ensure the widget loads
-            setTimeout(updateSvgWrappers, 100);  // Initial delay to ensure the widget loads
+            setTimeout(initWidgetModifications, 500); // Initial delay to ensure the widget loads
         });
     </script>
 </body>
