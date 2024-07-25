@@ -68,8 +68,8 @@
                 const wideWrappers = widgetDiv.querySelectorAll('.svg-wrapper.wide');
                 
                 if (narrowWrappers.length > 0 || wideWrappers.length > 0) {
-                    narrowWrappers.forEach(div => div.style.display = 'block');
-                    wideWrappers.forEach(div => div.style.display = 'none');
+                    narrowWrappers.forEach(div => div.style.display = 'inline-block !important');
+                    wideWrappers.forEach(div => div.style.display = 'none !important');
                 } else {
                     setTimeout(updateSvgWrappers, 100); // Retry after 100ms if wrappers are not yet available
                 }
@@ -82,7 +82,7 @@
         }
     
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(initWidgetModifications, 500); // Initial delay to ensure the widget loads
+            setTimeout(initWidgetModifications, 50); // Initial delay to ensure the widget loads
         });
     </script>
 </body>
