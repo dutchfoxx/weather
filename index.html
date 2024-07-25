@@ -61,21 +61,24 @@
             }
         }
     
-        function setSvgMargin() {
-            const widgetDiv = document.getElementById('ww_aafa8719d1cd6');
-            if (widgetDiv) {
-                const targetElement = widgetDiv.querySelector('div.ww-box > div.ww_col2 > div:nth-child(25) > div.data > div.svg-wrapper.wide > svg');
-                if (targetElement) {
-                    targetElement.style.margin = '0';
+        function updateSvgWrappers() {
+        const widgetDiv = document.getElementById('ww_aafa8719d1cd6');
+        if (widgetDiv) {
+            const narrowWrappers = widgetDiv.querySelectorAll('.svg-wrapper.narrow');
+            const wideWrappers = widgetDiv.querySelectorAll('.svg-wrapper.wide');
+            
+                if (narrowWrappers.length > 0 || wideWrappers.length > 0) {
+                    narrowWrappers.forEach(div => div.style.display = 'block');
+                    wideWrappers.forEach(div => div.style.display = 'none');
                 } else {
-                    setTimeout(setSvgMargin, 100); // Retry after 100ms if targetElement is not yet available
+                    setTimeout(updateSvgWrappers, 100); // Retry after 100ms if wrappers are not yet available
                 }
             }
         }
-    
+
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(hideTempDivs, 100); // Initial delay to ensure the widget loads
-            setTimeout(setSvgMargin, 100);  // Initial delay to ensure the widget loads
+            setTimeout(updateSvgWrappers, 100);  // Initial delay to ensure the widget loads
         });
     </script>
 </body>
